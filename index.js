@@ -2,5 +2,34 @@ document.getElementById('search-button').addEventListener('click',function(){
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value ='';
-    console.log(searchText)
+    //console.log(searchText)
+    const url = `http://openlibrary.org/search.json?q=${searchText}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displaySearchResult(data.docs))
 })
+const displaySearchResult = data =>{
+    const row = document.getElementById('row');
+    //console.log(data);
+    data.forEach(data =>{
+        console.log(data);
+        /* 
+        <img src="..." class="card-img-top" alt="...">
+        */
+        const div = document.createElement('div');
+        div.classList.add('col');
+        div.innerHTML=`
+        <div class="card h-100">
+            <div class="card-body">
+            <h1 class="card-title">Subject Name :  ${data.title}</h1>
+              <h5 class="card-title">Author Name: ${data.author_name}</h5>
+              <h5 class="card-title">First Published Date :  ${data.first_publish_year}</h5>
+              <p class="card-text">This is a longer.</p>
+            </div>
+          </div>
+        `
+        row.appendChild(div);
+
+   
+    });
+}
