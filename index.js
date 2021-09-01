@@ -9,6 +9,7 @@ document.getElementById('search-button').addEventListener('click',function(){
     .then(data => displaySearchResult(data.docs))
 })
 const displaySearchResult = data =>{
+    console.log(data)
     const row = document.getElementById('row');
     //console.log(data);
     data.forEach(data =>{
@@ -21,6 +22,7 @@ const displaySearchResult = data =>{
         div.innerHTML=`
         <div class="card h-100">
             <div class="card-body">
+            <img src="https://covers.openlibrary.org/b/id/${data.cover_i}-M.jpg" class="card-img-top" alt="...">
             <h1 class="card-title">Subject Name :  ${data.title}</h1>
               <h5 class="card-title">Author Name: ${data.author_name}</h5>
               <h5 class="card-title">First Published Date :  ${data.first_publish_year}</h5>
