@@ -9,7 +9,7 @@ document.getElementById('search-button').addEventListener('click',function(){
     errorDiv.innerText ='Please Write Somthing'
   }
   else{
-    const url = `http://openlibrary.org/search.json?q=${searchText}`;
+    const url = `https://openlibrary.org/search.json?q=${searchText}`;
     fetch(url)
     .then(res => res.json())
     .then(data => displaySearchResult(data.docs))
@@ -19,14 +19,15 @@ document.getElementById('search-button').addEventListener('click',function(){
 })
 const displaySearchResult = data =>{
   if(data.length === 0){
-    errorDiv.innerText = 'Please Write your correct book name'
+    errorDiv.innerText = 'No result found'
   }
   else{
     errorDiv.innerText='';
   }
     //console.log(data)
     const row = document.getElementById('row');
-    totalLength.innerText = `Total Datal : ${data.length}`
+    totalLength.innerText = `Total Book Found : ${data.length}`
+    row.textContent = '';
     //console.log(data.length);
     data.forEach(data =>{
         const div = document.createElement('div');
@@ -36,9 +37,10 @@ const displaySearchResult = data =>{
             <div class="card-body">
             <img src="https://covers.openlibrary.org/b/id/${data.cover_i}-M.jpg" class="card-img-top" alt="...">
             <h1 class="card-title">Book Name :  ${data.title}</h1>
-              <h5 class="card-title">Author Name: ${data.author_name}</h5>
-              <h5 class="card-title">First Published Date :  ${data.first_publish_year}</h5>
-              <p class="card-text">This is a longer.</p>
+              <h5>Author Name: ${data.author_name}</h5>
+              <h5>First Published Date :  ${data.first_publish_year}</h5>
+              <h5 class="card-title">First Published Date :  ${data.publisher}</h5>
+              
             </div>
           </div>
         `
