@@ -1,15 +1,30 @@
+const errorDiv = document.getElementById('error');
+
 document.getElementById('search-button').addEventListener('click',function(){
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value ='';
-    //console.log(searchText)
+
+  if(searchText === ''){
+    errorDiv.innerText ='Please Write Somthing'
+  }
+  else{
     const url = `http://openlibrary.org/search.json?q=${searchText}`;
     fetch(url)
     .then(res => res.json())
     .then(data => displaySearchResult(data.docs))
+  }
+
+    //console.log(searchText)
 })
 const displaySearchResult = data =>{
-    console.log(data)
+  if(data.length == 0){
+    errorDiv.innerText = 'Please Write your correct book name'
+  }
+  else{
+    errorDiv.innerText='';
+  }
+    //console.log(data)
     const row = document.getElementById('row');
     //console.log(data);
     data.forEach(data =>{
