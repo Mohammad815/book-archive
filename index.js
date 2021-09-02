@@ -36,7 +36,7 @@ const displaySearchResult = data =>{
       <div class="card h-100">
         <div class="card-body">
           <img src="https://covers.openlibrary.org/b/id/${data.cover_i}-M.jpg" class="card-img-top" alt="...">
-          <h1 class="card-title">Book Name :  ${data.title}</h1>
+          <h2 class="card-title">Book Name :  ${data.title}</h2>
           <h5>Author Name: ${data.author_name}</h5>
           <h5>First Published Date :  ${data.first_publish_year}</h5>
           <h5 class="card-title">Publisher :  ${data.publisher}</h5>
