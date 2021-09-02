@@ -1,5 +1,5 @@
 const errorDiv = document.getElementById('error');
-
+const totalLength = document.getElementById('total-length');
 document.getElementById('search-button').addEventListener('click',function(){
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
@@ -26,9 +26,10 @@ const displaySearchResult = data =>{
   }
     //console.log(data)
     const row = document.getElementById('row');
-    //console.log(data);
+    totalLength.innerText = `Total Datal : ${data.length}`
+    //console.log(data.length);
     data.forEach(data =>{
-        console.log(data);
+        //console.log(data);
         /* 
         <img src="..." class="card-img-top" alt="...">
         */
